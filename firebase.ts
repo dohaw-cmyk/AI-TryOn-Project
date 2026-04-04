@@ -1,17 +1,23 @@
-import { initializeApp } from "firebase/app";
+"use client";
+
+import { initializeApp, getApps, getApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
 
-// 본인의 파이어베이스 설정값 (그대로 유지)
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_AUTH_DOMAIN",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_STORAGE_BUCKET",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId: "YOUR_APP_ID"
+  apiKey: "선생님의_API_KEY",
+  authDomain: "선생님의_PROJECT_ID.firebaseapp.com",
+  projectId: "선생님의_PROJECT_ID",
+  storageBucket: "선생님의_PROJECT_ID.appspot.com",
+  messagingSenderId: "선생님의_SENDER_ID",
+  appId: "선생님의_APP_ID"
 };
 
-const app = initializeApp(firebaseConfig);
-export const auth = getAuth(app); // 외부에서 쓸 수 있게 export 필수
-export const db = getFirestore(app); // 외부에서 쓸 수 있게 export 필수
+// 앱이 이미 초기화되었는지 확인 후 초기화
+const app = getApps().length > 0 ? getApp() : initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+const storage = getStorage(app);
+
+export { app, auth, db, storage };
