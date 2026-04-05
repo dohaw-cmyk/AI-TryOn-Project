@@ -1,10 +1,11 @@
-import "./globals.css";
+"use client"; // <--- 진짜로 이 녀석이 1번 줄이어야 합니다. (이게 대빵입니다)
 
-"use client";
-
+import "./globals.css"; // <--- 선생님이 말씀하신 그 줄은 '2번 줄'로 한 칸만 내리세요.
 import React from 'react';
 
 export default function HomePage() {
+  // ... 나머지 코드
+}
   return (
     <div style={{
       minHeight: '100vh',
