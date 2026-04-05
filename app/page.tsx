@@ -3,43 +3,38 @@
 import React, { useState } from 'react';
 
 export default function App() {
-  // 현재 어떤 화면인지 숫자로 관리 (0: 대문, 1: 로그인, 2: 작업실)
   const [step, setStep] = useState(0);
 
+  // 버튼 누르면 step이 1로 바뀌면서 로그인창이 뜹니다.
+  const goToLogin = () => setStep(1);
+
   return (
-    <div style={{ backgroundColor: '#000', color: '#fff', minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', fontFamily: 'sans-serif' }}>
+    <div style={{ backgroundColor: '#000', color: '#fff', minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>
       
       {step === 0 && (
         <div>
-          <h1 style={{ fontSize: '50px', color: '#ff4d00' }}>WELCOME</h1>
+          <h1 style={{ fontSize: '48px', fontWeight: '900' }}>AI <span style={{ color: '#ff4d00' }}>TRY-ON</span></h1>
+          <p style={{ color: '#888', margin: '20px 0' }}>가상 피팅 서비스에 오신 것을 환영합니다.</p>
           <button 
-            style={{ padding: '20px 40px', fontSize: '20px', cursor: 'pointer', backgroundColor: '#ff4d00', color: 'white', border: 'none', borderRadius: '10px' }}
-            onClick={() => { console.log("로그인 클릭됨"); setStep(1); }}
+            onClick={goToLogin}
+            style={{ backgroundColor: '#ff4d00', color: 'white', padding: '15px 50px', fontSize: '18px', fontWeight: 'bold', border: 'none', borderRadius: '5px', cursor: 'pointer' }}
           >
-            로그인 시작하기
+            로그인하고 시작하기
           </button>
         </div>
       )}
 
       {step === 1 && (
-        <div>
-          <h1 style={{ color: '#ff4d00' }}>LOGIN PAGE</h1>
-          <p>여기는 로그인 화면입니다.</p>
+        <div style={{ width: '300px' }}>
+          <h2 style={{ color: '#ff4d00' }}>LOGIN</h2>
+          <input type="text" placeholder="아이디" style={{ width: '100%', padding: '10px', margin: '10px 0', backgroundColor: '#111', border: '1px solid #333', color: '#fff' }} />
           <button 
-            style={{ padding: '15px 30px', cursor: 'pointer' }}
-            onClick={() => setStep(2)}
+            onClick={() => alert('로그인 성공!')} 
+            style={{ width: '100%', padding: '10px', backgroundColor: '#ff4d00', color: '#fff', border: 'none', cursor: 'pointer' }}
           >
-            로그인 완료 (다음으로)
+            로그인 완료
           </button>
-          <p onClick={() => setStep(0)} style={{ cursor: 'pointer', color: '#666', marginTop: '20px' }}>뒤로가기</p>
-        </div>
-      )}
-
-      {step === 2 && (
-        <div>
-          <h1 style={{ color: '#ff4d00' }}>STUDIO</h1>
-          <p>축하합니다! 작업실에 들어오셨습니다.</p>
-          <button onClick={() => setStep(0)} style={{ cursor: 'pointer' }}>로그아웃</p>
+          <p onClick={() => setStep(0)} style={{ marginTop: '20px', color: '#666', cursor: 'pointer', fontSize: '14px' }}>← 돌아가기</p>
         </div>
       )}
 
