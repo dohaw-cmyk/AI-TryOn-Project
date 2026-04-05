@@ -1,6 +1,11 @@
 "use client";
 
+import "./globals.css";  // <-- 이 한 줄을 반드시 맨 위에 넣어야 합니다!
+"use client";
+
 import React from 'react';
+// ... 나머지 코드 ...
+
 
 export default function HomePage() {
   return (
