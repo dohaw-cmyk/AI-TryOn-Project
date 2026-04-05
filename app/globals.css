@@ -1,3 +1,66 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* app/globals.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@900&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  font-family: 'Inter', sans-serif;
+  color: black;
+}
+
+/* 로고 스타일 */
+h1 {
+  font-size: 2rem;
+  font-weight: 900;
+  margin: 20px 40px;
+  letter-spacing: -2px;
+}
+
+/* 메인 큰 글자 */
+h2 {
+  font-size: 8rem;
+  font-weight: 900;
+  line-height: 0.85;
+  letter-spacing: -5px;
+  text-align: center;
+  margin-top: 100px;
+  margin-bottom: 20px;
+}
+
+/* 설명 문구 */
+p {
+  text-align: center;
+  color: #888;
+  font-size: 1.2rem;
+  margin-bottom: 50px;
+}
+
+/* 검정색 버튼 */
+button {
+  display: block;
+  margin: 0 auto;
+  background-color: black;
+  color: white;
+  padding: 20px 60px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+/* 로그인 버튼만 따로 */
+button[onClick*="login"] {
+  display: inline-block;
+  background: none;
+  color: black;
+  padding: 10px;
+  margin-left: 40px;
+  font-size: 0.9rem;
+  border-bottom: 2px solid black;
+}
