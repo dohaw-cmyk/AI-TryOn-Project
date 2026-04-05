@@ -1,4 +1,6 @@
-"use client"; // 무조건 이 줄이 1번 줄이어야 합니다!
+import "./globals.css";
+
+"use client";
 
 import React from 'react';
 
