@@ -2,95 +2,63 @@
 
 import React, { useState } from 'react';
 
-export default function LoginPage() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
+export default function StudioPage() {
   return (
     <div style={{
       minHeight: '100vh',
-      backgroundColor: '#000000',
-      color: '#ffffff',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
-      fontFamily: 'sans-serif'
+      backgroundColor: '#000',
+      color: '#fff',
+      fontFamily: 'sans-serif',
+      padding: '20px'
     }}>
-      {/* 뒤로가기 혹은 로고 */}
-      <div style={{ marginBottom: '40px', textAlign: 'center' }}>
-        <h2 style={{ fontSize: '32px', fontWeight: '900', color: '#ff4d00' }}>LOGIN</h2>
-        <p style={{ color: '#888', marginTop: '10px' }}>AI TRY-ON 계정으로 로그인하세요</p>
-      </div>
+      {/* 헤더 */}
+      <header style={{ display: 'flex', justifyContent: 'space-between', padding: '20px', borderBottom: '1px solid #222' }}>
+        <h1 style={{ fontSize: '20px', fontWeight: 'bold', color: '#ff4d00' }}>AI TRY-ON STUDIO</h1>
+        <div style={{ fontSize: '14px', color: '#888' }}>사용자님 환영합니다</div>
+      </header>
 
-      {/* 로그인 폼 박스 */}
-      <div style={{
-        width: '100%',
-        maxWidth: '400px',
-        padding: '20px',
-        boxSizing: 'border-box'
+      {/* 메인 작업 영역 */}
+      <main style={{ 
+        display: 'flex', 
+        flexWrap: 'wrap', 
+        gap: '20px', 
+        justifyContent: 'center', 
+        marginTop: '40px' 
       }}>
-        {/* 이메일 입력창 */}
-        <div style={{ marginBottom: '20px' }}>
-          <label style={{ display: 'block', marginBottom: '8px', fontSize: '14px', color: '#aaa' }}>이메일 주소</label>
-          <input 
-            type="email" 
-            placeholder="example@email.com"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            style={{
-              width: '100%',
-              padding: '15px',
-              backgroundColor: '#1a1a1a',
-              border: '1px solid #333',
-              borderRadius: '8px',
-              color: 'white',
-              outline: 'none'
-            }}
-          />
+        
+        {/* 1. 사람 사진 업로드 */}
+        <div style={{ width: '350px', height: '450px', border: '2px dashed #333', borderRadius: '15px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', backgroundColor: '#111' }}>
+          <p style={{ color: '#666' }}>본인 또는 모델 사진 업로드</p>
+          <button style={{ marginTop: '15px', padding: '10px 20px', borderRadius: '5px', border: '1px solid #444', backgroundColor: 'transparent', color: 'white', cursor: 'pointer' }}>파일 선택</button>
         </div>
 
-        {/* 비밀번호 입력창 */}
-        <div style={{ marginBottom: '30px' }}>
-          <label style={{ display: 'block', marginBottom: '8px', fontSize: '14px', color: '#aaa' }}>비밀번호</label>
-          <input 
-            type="password" 
-            placeholder="••••••••"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            style={{
-              width: '100%',
-              padding: '15px',
-              backgroundColor: '#1a1a1a',
-              border: '1px solid #333',
-              borderRadius: '8px',
-              color: 'white',
-              outline: 'none'
-            }}
-          />
+        {/* 2. 옷 사진 업로드 */}
+        <div style={{ width: '350px', height: '450px', border: '2px dashed #333', borderRadius: '15px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', backgroundColor: '#111' }}>
+          <p style={{ color: '#666' }}>입혀볼 의류 사진 업로드</p>
+          <button style={{ marginTop: '15px', padding: '10px 20px', borderRadius: '5px', border: '1px solid #444', backgroundColor: 'transparent', color: 'white', cursor: 'pointer' }}>파일 선택</button>
         </div>
+      </main>
 
-        {/* 로그인 버튼 */}
+      {/* 생성 버튼 */}
+      <div style={{ textAlign: 'center', marginTop: '50px' }}>
         <button style={{
-          width: '100%',
-          padding: '18px',
           backgroundColor: '#ff4d00',
           color: 'white',
-          fontSize: '16px',
+          padding: '20px 100px',
+          fontSize: '20px',
           fontWeight: 'bold',
           border: 'none',
-          borderRadius: '8px',
+          borderRadius: '50px',
           cursor: 'pointer',
-          marginBottom: '20px'
+          boxShadow: '0 0 30px rgba(255, 77, 0, 0.4)'
         }}>
-          로그인
+          AI 가상 피팅 시작하기
         </button>
+      </div>
 
-        {/* 하단 링크 */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px', color: '#666' }}>
-          <span style={{ cursor: 'pointer' }}>비밀번호 찾기</span>
-          <span style={{ cursor: 'pointer', color: '#aaa' }}>회원가입 하기</span>
-        </div>
+      {/* 결과 영역 (미리보기) */}
+      <div style={{ marginTop: '60px', textAlign: 'center', color: '#444' }}>
+        <p>결과물은 이곳에 표시됩니다.</p>
       </div>
     </div>
   );
