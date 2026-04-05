@@ -1,37 +1,23 @@
 "use client";
 
-import "./globals.css";
 import React from 'react';
 
 export default function HomePage() {
   return (
     <div style={{
       minHeight: '100vh',
-      backgroundColor: '#000000',
-      color: '#ffffff',
+      backgroundColor: '#000',
+      color: '#fff',
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
       justifyContent: 'center',
-      margin: 0,
-      padding: 0
+      margin: 0
     }}>
-      <h1 style={{ fontSize: '40px', fontWeight: '900' }}>
-        AI <span style={{ color: '#ff4d00' }}>TRY-ON</span> SUCCESS
+      <h1 style={{ fontSize: '48px', fontWeight: 'bold' }}>
+        AI <span style={{ color: '#ff4d00' }}>TRY-ON</span>
       </h1>
-      <p style={{ color: '#888', marginTop: '20px' }}>연결에 성공했습니다! 이제 디자인이 시작됩니다.</p>
-      <button style={{
-        marginTop: '30px',
-        backgroundColor: '#ff4d00',
-        color: 'white',
-        padding: '15px 40px',
-        border: 'none',
-        borderRadius: '5px',
-        fontWeight: 'bold',
-        cursor: 'pointer'
-      }}>
-        화면 확인 완료
-      </button>
+      <p style={{ color: '#888', fontSize: '20px' }}>연결 성공! 이제 화면이 바뀝니다.</p>
     </div>
   );
 }
