@@ -1,43 +1,54 @@
 "use client";
-
 import React, { useState } from 'react';
 
 export default function App() {
-  const [step, setStep] = useState(0);
+  const [step, setStep] = useState(0); // 0: 대문, 1: 로그인, 2: 작업실
+  const [image, setImage] = useState<string | null>(null);
 
-  // 버튼 누르면 step이 1로 바뀌면서 로그인창이 뜹니다.
-  const goToLogin = () => setStep(1);
+  // 사진 선택 시 화면에 보여주는 기능
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => setImage(reader.result as string);
+      reader.readAsDataURL(file);
+    }
+  };
 
   return (
-    <div style={{ backgroundColor: '#000', color: '#fff', minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>
+    <div style={{ backgroundColor: '#000', color: '#fff', minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', fontFamily: 'sans-serif' }}>
       
+      {/* 1. 대문 */}
       {step === 0 && (
-        <div>
-          <h1 style={{ fontSize: '48px', fontWeight: '900' }}>AI <span style={{ color: '#ff4d00' }}>TRY-ON</span></h1>
-          <p style={{ color: '#888', margin: '20px 0' }}>가상 피팅 서비스에 오신 것을 환영합니다.</p>
-          <button 
-            onClick={goToLogin}
-            style={{ backgroundColor: '#ff4d00', color: 'white', padding: '15px 50px', fontSize: '18px', fontWeight: 'bold', border: 'none', borderRadius: '5px', cursor: 'pointer' }}
-          >
-            로그인하고 시작하기
-          </button>
+        <div style={{ textAlign: 'center' }}>
+          <h1 style={{ fontSize: '50px', color: '#ff4d00' }}>AI TRY-ON</h1>
+          <button style={btnStyle} onClick={() => setStep(1)}>로그인하고 시작하기</button>
         </div>
       )}
 
+      {/* 2. 로그인 (임시) */}
       {step === 1 && (
-        <div style={{ width: '300px' }}>
+        <div style={{ textAlign: 'center' }}>
           <h2 style={{ color: '#ff4d00' }}>LOGIN</h2>
-          <input type="text" placeholder="아이디" style={{ width: '100%', padding: '10px', margin: '10px 0', backgroundColor: '#111', border: '1px solid #333', color: '#fff' }} />
-          <button 
-            onClick={() => alert('로그인 성공!')} 
-            style={{ width: '100%', padding: '10px', backgroundColor: '#ff4d00', color: '#fff', border: 'none', cursor: 'pointer' }}
-          >
-            로그인 완료
-          </button>
-          <p onClick={() => setStep(0)} style={{ marginTop: '20px', color: '#666', cursor: 'pointer', fontSize: '14px' }}>← 돌아가기</p>
+          <button style={btnStyle} onClick={() => setStep(2)}>로그인 완료</button>
+        </div>
+      )}
+
+      {/* 3. 작업실 (사진 업로드 테스트 가능!) */}
+      {step === 2 && (
+        <div style={{ textAlign: 'center', padding: '20px' }}>
+          <h2 style={{ color: '#ff4d00' }}>STUDIO</h2>
+          <div style={{ width: '300px', height: '400px', border: '2px dashed #333', marginBottom: '20px', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
+            {image ? <img src={image} style={{ width: '100%' }} /> : <p>사진을 선택하세요</p>}
+          </div>
+          <input type="file" onChange={handleImageChange} style={{ marginBottom: '20px' }} />
+          <br />
+          <button style={{...btnStyle, backgroundColor: '#444'}} onClick={() => setStep(0)}>로그아웃</button>
         </div>
       )}
 
     </div>
   );
 }
+
+const btnStyle = { backgroundColor: '#ff4d00', color: 'white', padding: '15px 40px', border: 'none', borderRadius: '8px', cursor: 'pointer', fontSize: '18px', fontWeight: 'bold' };
