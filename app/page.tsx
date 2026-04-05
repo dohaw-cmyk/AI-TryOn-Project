@@ -1,57 +1,41 @@
-"use client";  // <--- 이 줄을 맨 위에 추가하세요!
+"use client";
 
 import React from 'react';
-// ... 나머지 코드
 
-import { useAuth } from "./context/AuthContext"; // 같은 app 폴더 내 경로
-import Link from "next/link";
+export const dynamic = "force-dynamic";
 
-export default function Home() {
-  const { user, role, loading } = useAuth();
-
-  // 1. 로딩 중일 때 (화면 멈춤 방지)
-  if (loading) {
-    return (
-      <div className="flex h-screen items-center justify-center bg-white text-black">
-        <p className="text-xl font-bold">시스템 연결 중...</p>
-      </div>
-    );
-  }
-
-  // 2. 메인 화면
+export default function HomePage() {
   return (
-    <main className="min-h-screen p-10 bg-white text-black">
-      <div className="max-w-xl mx-auto border-2 border-gray-100 p-8 rounded-3xl shadow-sm text-center">
-        <h1 className="text-4xl font-black mb-8 text-blue-600 italic">AI TRY-ON</h1>
+    <div className="min-h-screen bg-white font-sans text-black">
+      {/* 상단바 */}
+      <nav className="flex justify-between items-center px-10 py-8 border-b border-gray-50">
+        <h1 className="text-3xl font-black tracking-tighter">AI-TRYON</h1>
+        <div className="flex gap-6 text-sm font-bold">
+          <button onClick={() => window.location.href='/login'} className="bg-black text-white px-6 py-2">LOGIN</button>
+        </div>
+      </nav>
 
-        {user ? (
-          <div className="space-y-6">
-            <div className="p-4 bg-blue-50 rounded-2xl">
-              <p className="text-gray-600">반갑습니다!</p>
-              <p className="font-bold text-lg">{user.email}</p>
-              <p className="text-sm mt-2">현재 권한: <span className="text-blue-500 font-mono">[{role}]</span></p>
-            </div>
-            
-            <div className="flex flex-col gap-3">
-              {role === "admin" && (
-                <Link href="/admin" className="w-full bg-red-500 text-white py-4 rounded-xl font-bold hover:bg-red-600 transition">
-                  관리자 대시보드
-                </Link>
-              )}
-              <Link href="/user" className="w-full bg-blue-600 text-white py-4 rounded-xl font-bold hover:bg-blue-700 transition">
-                AI 가상 피팅 시작
-              </Link>
-            </div>
-          </div>
-        ) : (
-          <div className="py-10">
-            <p className="text-gray-400 mb-8 italic">로그인 후 AI 피팅을 경험해보세요.</p>
-            <Link href="/login" className="bg-black text-white px-12 py-4 rounded-full font-black text-xl hover:scale-105 transition-transform inline-block">
-              START →
-            </Link>
-          </div>
-        )}
-      </div>
-    </main>
+      {/* 메인 섹션 */}
+      <main className="flex flex-col items-center justify-center py-32 px-4 text-center">
+        <h2 className="text-7xl md:text-8xl font-black mb-8 tracking-tighter leading-[0.9]">
+          VIRTUAL<br/>FITTING
+        </h2>
+        <p className="max-w-xl text-lg text-gray-400 mb-12 font-medium leading-relaxed">
+          AI가 제안하는 당신의 새로운 스타일.<br/>
+          지금 바로 가상 피팅을 체험해보세요.
+        </p>
+
+        <button 
+          onClick={() => alert("서비스 준비 중입니다!")}
+          className="w-full max-w-xs py-5 bg-black text-white text-xl font-bold hover:bg-gray-800 transition-all shadow-2xl"
+        >
+          GET STARTED
+        </button>
+      </main>
+
+      <footer className="py-20 text-center text-[10px] text-gray-300 tracking-[0.5em]">
+        © 2026 AI-TRYON STUDIOS.
+      </footer>
+    </div>
   );
 }
