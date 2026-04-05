@@ -1,40 +1,51 @@
 "use client";
 
-import "./globals.css";  // <-- 이 한 줄을 반드시 맨 위에 넣어야 합니다!
-"use client";
-
 import React from 'react';
-// ... 나머지 코드 ...
-
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-white font-sans text-black">
-      <nav className="flex justify-between items-center px-10 py-8 border-b border-gray-50">
-        <h1 className="text-3xl font-black tracking-tighter italic">AI-TRYON</h1>
-        <div className="flex gap-6 text-sm font-bold">
-          <button onClick={() => window.location.href='/login'} className="hover:underline">LOGIN</button>
-        </div>
+    <div style={{
+      minHeight: '100vh',
+      backgroundColor: 'white',
+      color: 'black',
+      fontFamily: 'sans-serif',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      padding: '40px'
+    }}>
+      {/* 헤더 */}
+      <nav style={{ width: '100%', display: 'flex', justifyContent: 'space-between', marginBottom: '100px' }}>
+        <h1 style={{ fontSize: '24px', fontWeight: '900', fontStyle: 'italic', margin: 0 }}>AI-TRYON</h1>
+        <button style={{ background: 'none', border: 'none', borderBottom: '2px solid black', cursor: 'pointer', fontWeight: 'bold' }}>LOGIN</button>
       </nav>
 
-      <main className="flex flex-col items-center justify-center py-32 px-4 text-center">
-        <span className="text-[10px] font-bold tracking-[0.6em] text-gray-400 mb-6">NEXT GENERATION FASHION</span>
-        <h2 className="text-7xl md:text-9xl font-black mb-10 tracking-tighter leading-[0.85]">
+      {/* 메인 내용 */}
+      <div style={{ textAlign: 'center', maxWidth: '800px' }}>
+        <span style={{ fontSize: '10px', letterSpacing: '0.5em', color: '#aaa', fontWeight: 'bold' }}>NEXT GENERATION FASHION</span>
+        <h2 style={{ fontSize: '80px', fontWeight: '900', lineHeight: '0.9', margin: '20px 0', letterSpacing: '-4px' }}>
           VIRTUAL<br/>FITTING
         </h2>
-        <p className="max-w-xl text-lg text-gray-400 mb-14 font-medium leading-relaxed">
+        <p style={{ color: '#666', fontSize: '18px', lineHeight: '1.6', marginBottom: '40px' }}>
           AI가 제안하는 당신의 새로운 스타일.<br/>
           지금 바로 가상 피팅을 체험해보세요.
         </p>
 
-        <button 
-          className="w-full max-w-xs py-5 bg-black text-white text-xl font-bold hover:scale-105 transition-transform duration-300 shadow-2xl"
-        >
+        <button style={{
+          backgroundColor: 'black',
+          color: 'white',
+          padding: '20px 80px',
+          fontSize: '20px',
+          fontWeight: 'bold',
+          border: 'none',
+          cursor: 'pointer',
+          boxShadow: '0 20px 40px rgba(0,0,0,0.2)'
+        }}>
           GET STARTED
         </button>
-      </main>
+      </div>
 
-      <footer className="py-20 text-center text-[10px] text-gray-300 tracking-[0.8em]">
+      <footer style={{ marginTop: 'auto', fontSize: '10px', color: '#ccc', letterSpacing: '0.5em', padding: '40px' }}>
         © 2026 AI-TRYON STUDIOS.
       </footer>
     </div>
