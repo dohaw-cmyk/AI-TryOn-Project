@@ -17,15 +17,5 @@
     "lucide-react": "latest",
     "clsx": "latest",
     "tailwind-merge": "latest"
-  },
-  "devDependencies": {
-    "typescript": "latest",
-    "@types/node": "latest",
-    "@types/react": "latest",
-    "@types/react-dom": "latest",
-    "postcss": "latest",
-    "tailwindcss": "latest",
-    "eslint": "latest",
-    "eslint-config-next": "latest"
   }
 }
